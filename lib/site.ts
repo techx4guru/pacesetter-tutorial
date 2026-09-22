@@ -1,3 +1,17 @@
+function resolveSiteUrl() {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configured) return configured.replace(/\/$/, "");
+
+  const vercelHost = (
+    process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL
+  )?.trim();
+  if (vercelHost) {
+    return `https://${vercelHost.replace(/^https?:\/\//, "").replace(/\/$/, "")}`;
+  }
+
+  return "http://localhost:3000";
+}
+
 export const site = {
   name: "Omorewa Yomi Godwin",
   studio: "Pacesetter Tutorial",
@@ -10,7 +24,7 @@ export const site = {
   headlineRest: "Building Academic Excellence with Practical Clarity.",
   description:
     "Omorewa Yomi Godwin is a TRCN-certified chemical engineer and the founder of Pacesetter Tutorial. He teaches Mathematics, Further Mathematics, Physics, Chemistry, and Chemical Engineering fundamentals to secondary students, WAEC, NECO, and UTME candidates, and undergraduate scientists in Ekpan, Warri and online.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: resolveSiteUrl(),
   phoneDisplay: "+234 703 377 5766",
   phoneTel: "+2347033775766",
   whatsappNumber: "2347033775766",

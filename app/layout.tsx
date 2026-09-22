@@ -18,8 +18,16 @@ const outfit = Outfit({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+function metadataBaseUrl() {
+  try {
+    return new URL(site.url);
+  } catch {
+    return new URL("http://localhost:3000");
+  }
+}
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: metadataBaseUrl(),
   title: {
     default: "Omorewa Yomi Godwin | Founder, Pacesetter Tutorial",
     template: "%s | Omorewa Yomi Godwin",
