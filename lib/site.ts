@@ -31,14 +31,38 @@ export const site = {
   location: "Pacesetter Tutorial, Ekpan, Warri, Delta State, Nigeria",
   locationShort: "Ekpan, Warri",
   linkedin: "https://www.linkedin.com/in/yomi-omorewa-120bb5158",
-  youtube:
-    "https://www.youtube.com/results?search_query=Pacesetter+Tutorial+Omorewa+Godwin+Yomi",
+  youtube: "https://www.youtube.com/results?search_query=pacesetter+tutorial",
+  sampleLecture: "https://youtu.be/B1sgteyasA0?si=_vxwk5qwWU1qEewe",
+  sampleLectureEmbed:
+    "https://www.youtube.com/embed/B1sgteyasA0?si=_vxwk5qwWU1qEewe",
   mapEmbed:
     "https://www.openstreetmap.org/export/embed.html?bbox=5.74%2C5.53%2C5.82%2C5.58&layer=mapnik&marker=5.554%2C5.784",
   mapLink:
     "https://www.google.com/maps/search/?api=1&query=Ekpan%2C+Warri%2C+Delta+State%2C+Nigeria",
   cheatSheetTitle: "Essential STEM & Mathematics Formula Cheat Sheet",
+  profilePhoto: "/profile/omorewa-yomi-godwin.jpg",
 } as const;
+
+export const lectures = [
+  {
+    rank: "01",
+    title: "Trigonometry For Beginners! 2026 - Part 1",
+    watch: "https://youtu.be/i207JXxLHs4?si=FVxBVKhZMq1yJ7KP",
+    embed: "https://www.youtube.com/embed/i207JXxLHs4?si=FVxBVKhZMq1yJ7KP",
+  },
+  {
+    rank: "02",
+    title: "Trigonometry For Beginners - Part 2",
+    watch: "https://youtu.be/Bl7YGLT_bPU?si=ksJq7FvM5I_3h-kw",
+    embed: "https://www.youtube.com/embed/Bl7YGLT_bPU?si=ksJq7FvM5I_3h-kw",
+  },
+  {
+    rank: "03",
+    title: "Chemical Equilibrium Chemistry - Part 1",
+    watch: "https://youtu.be/B1sgteyasA0?si=IC_FJ9S8MWP5ntJR",
+    embed: "https://www.youtube.com/embed/B1sgteyasA0?si=IC_FJ9S8MWP5ntJR",
+  },
+] as const;
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -205,22 +229,25 @@ export const included = [
   },
 ] as const;
 
+export const classFees = {
+  online: "₦50,000",
+  physical: "₦50,000",
+  registration: "₦10,000",
+} as const;
+
 export const pricingTiers = [
   {
     name: "WAEC & NECO Group Class",
-    price: "from ₦X/month",
     detail:
       "Monthly group revision in Mathematics, Further Mathematics, Physics, and Chemistry, paced to the school term and the external paper.",
   },
   {
     name: "UTME Intensive",
-    price: "from ₦X/month",
     detail:
       "A tighter monthly subscription for candidates who need score movement in Mathematics, Physics, Chemistry, or a combination of the three.",
   },
   {
     name: "IGCSE & SAT Bootcamp",
-    price: "from ₦X/month",
     detail:
       "Small-group preparation for students sitting IGCSE or SAT, with the same insistence on working that can be followed.",
   },

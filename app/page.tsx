@@ -6,6 +6,7 @@ import { StatsBar } from "@/components/StatsBar";
 import {
   audiences,
   bio,
+  lectures,
   services,
   site,
   subjects,
@@ -66,6 +67,72 @@ export default function HomePage() {
         <StatsBar />
       </Reveal>
 
+      <section className="mx-auto max-w-[1440px] px-5 py-20 md:px-10">
+        <Reveal>
+          <p className="text-sm text-coral">Start here</p>
+          <h2 className="mt-3 max-w-xl text-4xl font-semibold tracking-tight text-white md:text-5xl">
+            The lessons, in rank order.
+          </h2>
+        </Reveal>
+        <div className="mt-12 grid items-start gap-6 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]">
+          <Reveal>
+            <figure className="overflow-hidden rounded-3xl bg-white">
+              <img
+                src={site.profilePhoto}
+                alt="Omorewa Yomi Godwin"
+                className="aspect-[4/5] w-full object-cover object-top"
+              />
+              <figcaption className="px-6 py-5">
+                <p className="text-lg font-semibold tracking-tight">{site.name}</p>
+                <p className="mt-1 text-sm text-white/70">Founder of {site.studio}</p>
+              </figcaption>
+            </figure>
+          </Reveal>
+          <div className="grid gap-4">
+            <Reveal delay={80}>
+              <article className="rounded-3xl bg-white p-4 md:p-5">
+                <p className="text-sm font-semibold text-coral">#{lectures[0].rank}</p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                  <a href={lectures[0].watch} target="_blank" rel="noreferrer" className="hover:text-white/80">
+                    {lectures[0].title}
+                  </a>
+                </h3>
+                <iframe
+                  className="mt-4 aspect-video w-full rounded-2xl"
+                  src={lectures[0].embed}
+                  title={lectures[0].title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </article>
+            </Reveal>
+            <div className="grid gap-4 md:grid-cols-2">
+              {lectures.slice(1).map((lecture, index) => (
+                <Reveal key={lecture.rank} delay={140 + index * 70}>
+                  <article className="rounded-3xl bg-white p-4">
+                    <p className="text-sm font-semibold text-coral">#{lecture.rank}</p>
+                    <h3 className="mt-2 text-lg font-semibold tracking-tight">
+                      <a href={lecture.watch} target="_blank" rel="noreferrer" className="hover:text-white/80">
+                        {lecture.title}
+                      </a>
+                    </h3>
+                    <iframe
+                      className="mt-4 aspect-video w-full rounded-2xl"
+                      src={lecture.embed}
+                      title={lecture.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </article>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[1440px] px-5 py-24 md:px-10">
         <Reveal>
           <p className="text-sm text-coral">What I teach</p>
@@ -76,7 +143,7 @@ export default function HomePage() {
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {subjects.map((subject, index) => (
             <Reveal key={subject.name} delay={index * 70}>
-            <article className="p-6">
+            <article className="rounded-3xl bg-white p-6">
               <p className="text-sm font-semibold text-coral">#{String(index + 1).padStart(2, "0")}</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">{subject.name}</h3>
               <p className="mt-3 text-sm leading-6 text-white/70">{subject.audience}</p>
@@ -90,7 +157,7 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-24 md:px-10 lg:grid-cols-3">
           {audiences.map((audience, index) => (
             <Reveal key={audience.title} delay={index * 90}>
-            <article>
+            <article className="rounded-3xl bg-white p-6">
               <p className="text-sm font-semibold text-coral">#{String(index + 1).padStart(2, "0")}</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">{audience.title}</h3>
               <p className="mt-3 text-sm leading-7 text-white/70">{audience.detail}</p>
@@ -101,7 +168,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto grid max-w-[1440px] items-center gap-12 px-5 py-24 md:px-10 lg:grid-cols-2">
-        <Reveal>
+        <Reveal className="rounded-3xl bg-white p-6">
           <p className="text-sm text-coral">The founder</p>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">A teacher who stayed in the sciences.</h2>
           <p className="mt-5 text-lg leading-8 text-white/75">{bio.short}</p>
@@ -112,7 +179,7 @@ export default function HomePage() {
           </Link>
         </Reveal>
         <Reveal delay={120}>
-        <blockquote className="border-l border-coral pl-6">
+        <blockquote className="rounded-3xl bg-white p-6">
           <p className="text-2xl leading-snug font-medium tracking-tight md:text-3xl">“{testimonial.quote}”</p>
           <footer className="mt-5 text-sm text-coral">{testimonial.attribution}</footer>
         </blockquote>
@@ -120,7 +187,7 @@ export default function HomePage() {
       </section>
 
       <section id="cheat-sheet" className="mx-auto max-w-[1440px] px-5 pb-8 md:px-10">
-        <Reveal className="flex flex-col items-start justify-between gap-6 px-2 py-10 md:flex-row md:items-center">
+        <Reveal className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-white px-8 py-10 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-coral">Free sheet</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">{site.cheatSheetTitle}</h2>
@@ -145,7 +212,7 @@ export default function HomePage() {
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {services.map((service, index) => (
             <Reveal key={service.title} delay={index * 80}>
-            <article className="p-6">
+            <article className="rounded-3xl bg-white p-6">
               <p className="text-sm font-semibold text-coral">#{String(index + 1).padStart(2, "0")}</p>
               <h3 className="mt-3 text-2xl font-semibold tracking-tight">{service.title}</h3>
               <p className="mt-2 text-xs tracking-[0.14em] text-white/45 uppercase">{service.mode}</p>
@@ -157,7 +224,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <Reveal className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-6 px-5 py-16 md:flex-row md:items-center md:px-10">
+        <Reveal className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-6 rounded-3xl bg-white px-6 py-10 md:flex-row md:items-center md:px-10">
           <div>
             <h2 className="text-4xl font-semibold tracking-tight">Work with him.</h2>
             <p className="mt-3 max-w-xl text-white/65">
@@ -169,7 +236,7 @@ export default function HomePage() {
               WhatsApp
               <span className="grid h-8 w-8 place-items-center rounded-full bg-coral text-white">→</span>
             </a>
-            <Link href="/contact#enroll" className="inline-flex items-center rounded-full border border-white/20 px-5 py-3 text-sm text-white">
+            <Link href="/contact#enroll" className="inline-flex items-center rounded-full px-5 py-3 text-sm text-white">
               Enrolment form
             </Link>
           </div>

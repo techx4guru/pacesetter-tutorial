@@ -27,8 +27,8 @@ body {
 }
 
 .bg-white {
-  background-color: rgb(8 8 12 / 0.28);
-  backdrop-filter: blur(8px);
+  background-color: rgb(8 8 12 / 0.42);
+  backdrop-filter: blur(2px);
 }
 
 .bg-navy,

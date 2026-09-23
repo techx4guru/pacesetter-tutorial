@@ -3,7 +3,7 @@ import { listPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["", "/about", "/services", "/resources", "/contact"].map((path) => ({
+    const staticRoutes = ["", "/about", "/services", "/resources", "/gallery", "/contact"].map((path) => ({
     url: `${site.url}${path || "/"}`,
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.8,

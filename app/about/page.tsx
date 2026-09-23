@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { PhotoFrame } from "@/components/PhotoFrame";
 import { Reveal } from "@/components/Reveal";
@@ -91,6 +92,9 @@ export default function AboutPage() {
             <PhotoFrame key={photo.kind} {...photo} />
           ))}
         </div>
+        <Link href="/gallery" className="mt-8 inline-flex text-sm font-semibold text-gold underline-offset-4 hover:underline">
+          View all
+        </Link>
       </section>
 
       <section className="bg-cream">
@@ -113,24 +117,19 @@ export default function AboutPage() {
               </a>
             </div>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-line bg-navy shadow-xl">
-            <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-xs text-white/70">
+          <div className="overflow-hidden rounded-3xl bg-white shadow-xl">
+            <div className="flex items-center gap-2 px-4 py-3 text-xs text-white/70">
               <span className="h-2.5 w-2.5 rounded-full bg-gold" />
               Sample lecture · YouTube
             </div>
-            <a
-              href={site.youtube}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative grid aspect-video place-items-center bg-[radial-gradient(circle_at_center,rgba(15,157,88,0.35),#06122b_70%)]"
-            >
-              <span className="grid h-20 w-20 place-items-center rounded-full bg-gold text-navy transition group-hover:scale-105">
-                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-                  <path d="M8 5v14l11-7L8 5Z" />
-                </svg>
-              </span>
-              <span className="sr-only">Play the Pacesetter Tutorial sample lectures on YouTube</span>
-            </a>
+            <iframe
+              className="aspect-video w-full"
+              src={site.sampleLectureEmbed}
+              title="Pacesetter Tutorial sample lecture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
             <div className="space-y-2 bg-paper p-5 text-sm leading-6 text-ink/80">
               <p className="font-semibold text-navy">What the first ten minutes usually settle</p>
               <p>

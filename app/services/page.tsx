@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { BookingCalendar } from "@/components/forms";
-import { included, pricingTiers, services, whatsappLink, whatsappMessages } from "@/lib/site";
+import { classFees, included, pricingTiers, services, whatsappLink, whatsappMessages } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Tutoring Programmes",
@@ -41,15 +41,17 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-8">
           <h2 className="font-serif text-4xl">Monthly group classes, and private coaching.</h2>
           <p className="mt-4 max-w-2xl text-white/75">
-            Group subscriptions are shown as from ₦X/month so the published term figure can be
-            dropped in without redesigning the page. Private 1-on-1 coaching is a custom quote —
-            book a consultation.
+            Online classes are {classFees.online}. Physical classes are {classFees.physical}, plus a {classFees.registration} registration fee. That registration fee applies to every physical class. Online classes do not include it.
           </p>
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {pricingTiers.map((tier) => (
               <article key={tier.name} className="rounded-3xl bg-white p-6 text-ink">
                 <h3 className="font-serif text-2xl text-navy">{tier.name}</h3>
-                <p className="mt-4 font-serif text-3xl text-emerald">{tier.price}</p>
+                <p className="mt-4 text-xs font-semibold tracking-[0.16em] text-emerald uppercase">Online</p>
+                <p className="mt-1 font-serif text-3xl text-emerald">{classFees.online}</p>
+                <p className="mt-4 text-xs font-semibold tracking-[0.16em] text-emerald uppercase">Physical</p>
+                <p className="mt-1 font-serif text-3xl text-emerald">{classFees.physical}</p>
+                <p className="mt-2 text-sm text-ink/75">Plus a {classFees.registration} registration fee.</p>
                 <p className="mt-3 text-sm leading-6 text-ink/75">{tier.detail}</p>
               </article>
             ))}

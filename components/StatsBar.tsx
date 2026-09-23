@@ -73,7 +73,7 @@ export function StatsBar() {
 
   return (
     <div ref={ref} className="relative z-10 mx-auto max-w-[1440px] px-5 md:px-10">
-      <div className="grid divide-y divide-white/10 rounded-none border-y border-white/10 bg-transparent py-10 md:grid-cols-3 md:divide-x md:divide-y-0">
+      <div className="grid rounded-3xl bg-white py-10 md:grid-cols-3">
         {stats.map((stat) => (
           <Stat key={stat.label} {...stat} active={active} />
         ))}
